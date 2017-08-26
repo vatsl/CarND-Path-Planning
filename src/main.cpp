@@ -279,7 +279,7 @@ int main() {
 			    // ref_vel = 49.5; //mph
 			    too_close = true;
 	         	    if((check_car_s > car_s) && ((check_car_s-car_s) < (min_front_dist*0.5))){
-				ref_vel -= 0.70; // brake a bit harder if too close
+				ref_vel -= 0.80; // brake a bit harder if too close
 				std::cout << "Unsafe Distance - Hard Brake" << std::endl;
 			    }
 			}
@@ -289,14 +289,14 @@ int main() {
 			// check if a lane change is possible
 		    	int left_lane = lane - 1;
 		    	if(lane>0 && left_lane_clear && d<(2+4*left_lane+2) && d>(2+4*left_lane-2)){
-			    if((check_car_s > car_s) && ((check_car_s-car_s) < (min_front_dist*1.5)) || (check_car_s < car_s) && ((car_s - check_car_s) < min_rear_dist)){
+			    if((check_car_s > car_s) && ((check_car_s-car_s) < (min_front_dist*1.3)) || (check_car_s < car_s) && ((car_s - check_car_s) < min_rear_dist)){
 			        left_lane_clear = false;
 			    }
 			}
 
 		    	int right_lane = lane + 1;
 		    	if(lane<2 && right_lane_clear && d<(2+4*right_lane+2) && d>(2+4*right_lane-2)){
-			    if((check_car_s > car_s) && ((check_car_s-car_s) < (min_front_dist*1.5)) || (check_car_s < car_s) && ((car_s - check_car_s) < min_rear_dist)){
+			    if((check_car_s > car_s) && ((check_car_s-car_s) < (min_front_dist*1.3)) || (check_car_s < car_s) && ((car_s - check_car_s) < min_rear_dist)){
 			    	right_lane_clear = false;
 			    }
 		    	}
@@ -317,7 +317,7 @@ int main() {
 			num_lane_shifts += 1;
 		    }
 		    
-	        } else if(ref_vel < 49.5){
+	        } else if(ref_vel <= 49.3){
 	           ref_vel += 0.5;
 	        }
 		
